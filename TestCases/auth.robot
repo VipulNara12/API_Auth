@@ -9,7 +9,6 @@ ${name}     Vipul Nara
 
 *** Test Cases ***
 ApiAuth
-#    CreateCart
     GetProductsAndAddProduct
 
 *** Keywords ***
@@ -44,7 +43,3 @@ GetProductsAndAddProduct
 
     ${get_orders}=  GET    ${baseUrl}/orders   headers=${header}
     log    ${get_orders.json()}
-
-
-displayVariable
-    log    ${productID}
