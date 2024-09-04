@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-09-03T23:38:14.293242" rpa="false" schemaversion="5">
+<suite id="s1" name="Auth" source="E:\Pycharm Projects\API_Auth\TestCases\auth.robot">
+<test id="s1-t1" name="ApiAuth" line="11">
+<kw name="GetProductsAndAddProduct">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:15.047670" level="INFO">Creating Session using : alias=mysession, url=https://simple-grocery-store-api.glitch.me, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseUrl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-09-03T23:38:15.047670" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-09-03T23:38:15.048676" level="INFO">${bearer_body} = {'clientName': 'Vipul', 'clientEmail': 'vipul@gmail1.com'}</msg>
+<var>${bearer_body}</var>
+<arg>clientName=Vipul</arg>
+<arg>clientEmail=vipul@gmail1.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-09-03T23:38:15.047670" elapsed="0.001006"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:17.973002" level="INFO">POST Request : url=https://simple-grocery-store-api.glitch.me/api-clients 
+ path_url=/api-clients 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '58', 'Content-Type': 'application/json'} 
+ body=b'{"clientName": "Vipul", "clientEmail": "vipul@gmail1.com"}' 
+ </msg>
+<msg time="2024-09-03T23:38:17.973002" level="INFO">POST Response : url=https://simple-grocery-store-api.glitch.me/api-clients 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:17 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"52-etHA0th6NFiXmQupyx89L6ZGUyA"'} 
+ body={"accessToken":"41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a"} 
+ </msg>
+<msg time="2024-09-03T23:38:17.973002" level="INFO">C:\Users\VipulNara\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'simple-grocery-store-api.glitch.me'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-09-03T23:38:17.974002" level="INFO">${bearer} = &lt;Response [201]&gt;</msg>
+<var>${bearer}</var>
+<arg>mysession</arg>
+<arg>/api-clients</arg>
+<arg>json=${bearer_body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-09-03T23:38:15.048676" elapsed="2.925326"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-09-03T23:38:17.975995" level="INFO">${bearer_token} = 41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a</msg>
+<var>${bearer_token}</var>
+<arg>${bearer.json()}</arg>
+<arg>accessToken</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-09-03T23:38:17.974002" elapsed="0.001993"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:17.975995" level="INFO">41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a</msg>
+<arg>${bearer_token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:17.975995" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:19.612143" level="INFO">POST Request : url=https://simple-grocery-store-api.glitch.me/carts 
+ path_url=/carts 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-09-03T23:38:19.612143" level="INFO">POST Response : url=https://simple-grocery-store-api.glitch.me/carts 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '49', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"31-opRc3KHB8XfgDW0J0H85kwlhDAE"'} 
+ body={"created":true,"cartId":"kAuepcJ3dwDPhscrhsGmY"} 
+ </msg>
+<msg time="2024-09-03T23:38:19.613111" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${baseUrl}/carts</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-09-03T23:38:17.976995" elapsed="1.636116"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-09-03T23:38:19.615093" level="INFO">${cartId} = kAuepcJ3dwDPhscrhsGmY</msg>
+<var>${cartId}</var>
+<arg>${response.json()}</arg>
+<arg>cartId</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-09-03T23:38:19.613111" elapsed="0.001982"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:19.616108" level="INFO">kAuepcJ3dwDPhscrhsGmY</msg>
+<arg>${cartId}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:19.616108" elapsed="0.000000"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:20.570513" level="INFO">GET Request : url=https://simple-grocery-store-api.glitch.me/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-09-03T23:38:20.570513" level="INFO">GET Response : url=https://simple-grocery-store-api.glitch.me/products 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1716', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"6b4-RVZTrjCoC03tQFslV/oF2zXZ8Wo"'} 
+ body=[{"id":4643,"category":"coffee","name":"Starbucks Coffee Variety Pack, 100% Arabica","inStock":true},{"id":4646,"category":"coffee","name":"Ethical Bean Medium Dark Roast, Espresso","inStock":true},{"id":4641,"category":"coffee","name":"Don Francisco Colombia Supremo Medium Roast","inStock":true},{"id":1225,"category":"fresh-produce","name":"1/2 in. Brushless Hammer Drill","inStock":true},{"id":3674,"category":"fresh-produce","name":"20V Max Cordless Drill Combo Kit","inStock":true},{"id":2585,"category":"fresh-produce","name":"Green Cabbage Organic","inStock":true},{"id":5851,"category":"fresh-produce","name":"Cucumber Organic","inStock":false},{"id":8739,"category":"fresh-produce","name":"Fresh Spinach Organic","inStock":true},{"id":2177,"category":"meat-seafood","name":"Cosco Three Step Steel Platform","inStock":true},{"id":1709,"category":"meat-seafood","name":"Beef Choice Angus Ribeye Steak","inStock":true},{"id":1709,"category":"meat-seafood","name":"Angus Steak Burgers","inStock":true},{"id":7395,"category":"meat-seafood","name":"Boneless Skinless Chicken Breasts","inStock":true},{"id":8554,"category":"candy","name":"Kinder Joy Eggs","inStock":true},{"id":6483,"category":"candy","name":"Cadbury Milk Chocolate","inStock":true},{"id":5774,"category":"candy","name":"HERSHEY'S, Milk Chocolate Almond","inStock":true},{"id":8753,"category":"dairy","name":"Reduced Fat Milk","inStock":true},{"id":9482,"category":"dairy","name":"Whole Milk","inStock":true},{"id":5477,"category":"dairy","name":"Cream Cheese","inStock":true},{"id":5478,"category":"dairy","name":"Low Fat Vanilla Yogurt","inStock":true},{"id":4875,"category":"bread-bakery","name":"2800 Watt Inverter Generator","inStock":true}] 
+ </msg>
+<msg time="2024-09-03T23:38:20.570513" level="INFO">${response_product} = &lt;Response [200]&gt;</msg>
+<var>${response_product}</var>
+<arg>${baseUrl}/products</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-09-03T23:38:19.617098" elapsed="0.954416"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2024-09-03T23:38:20.620509" level="INFO">${product} = [{'id': 4643, 'category': 'coffee', 'name': 'Starbucks Coffee Variety Pack, 100% Arabica', 'inStock': True}]</msg>
+<var>${product}</var>
+<arg>${response_product.json()}</arg>
+<arg>$.[0]</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2024-09-03T23:38:20.571514" elapsed="0.048995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:20.621503" level="INFO">[{'id': 4643, 'category': 'coffee', 'name': 'Starbucks Coffee Variety Pack, 100% Arabica', 'inStock': True}]</msg>
+<arg>${product}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.620509" elapsed="0.000994"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<msg time="2024-09-03T23:38:20.621503" level="INFO">${productDict} = {'id': 4643, 'category': 'coffee', 'name': 'Starbucks Coffee Variety Pack, 100% Arabica', 'inStock': True}</msg>
+<var>${productDict}</var>
+<arg>${product}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.621503" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:20.622507" level="INFO">{'id': 4643, 'category': 'coffee', 'name': 'Starbucks Coffee Variety Pack, 100% Arabica', 'inStock': True}</msg>
+<arg>${productDict}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.622507" elapsed="0.000000"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-09-03T23:38:20.622507" level="INFO">${productId} = 4643</msg>
+<var>${productId}</var>
+<arg>${productDict}</arg>
+<arg>id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.622507" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:20.623502" level="INFO">4643</msg>
+<arg>${productId}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.623502" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-09-03T23:38:20.624030" level="INFO">${dict} = {'productId': 4643}</msg>
+<var>${dict}</var>
+<arg>productId=${productId}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.624030" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:22.479250" level="INFO">POST Request : url=https://simple-grocery-store-api.glitch.me/carts/kAuepcJ3dwDPhscrhsGmY/items 
+ path_url=/carts/kAuepcJ3dwDPhscrhsGmY/items 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '19', 'Content-Type': 'application/json'} 
+ body=b'{"productId": 4643}' 
+ </msg>
+<msg time="2024-09-03T23:38:22.479250" level="INFO">POST Response : url=https://simple-grocery-store-api.glitch.me/carts/kAuepcJ3dwDPhscrhsGmY/items 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:22 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '35', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"23-ozA6oUxBFlu9Pt+aFMByI5Kc7GQ"'} 
+ body={"created":true,"itemId":136343402} 
+ </msg>
+<msg time="2024-09-03T23:38:22.480270" level="INFO">${response_prod} = &lt;Response [201]&gt;</msg>
+<var>${response_prod}</var>
+<arg>${baseUrl}/carts/${cartId}/items</arg>
+<arg>json=${dict}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-09-03T23:38:20.624030" elapsed="1.856240"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:22.482250" level="INFO">{'created': True, 'itemId': 136343402}</msg>
+<arg>${response_prod.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:22.480270" elapsed="0.001980"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-09-03T23:38:22.483256" level="INFO">${header} = {'Authorization': '41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a'}</msg>
+<var>${header}</var>
+<arg>Authorization=${bearer_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-09-03T23:38:22.482250" elapsed="0.001006"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-09-03T23:38:22.484254" level="INFO">${order_dict} = {'cartId': 'kAuepcJ3dwDPhscrhsGmY', 'customerName': 'Vipul Nara'}</msg>
+<var>${order_dict}</var>
+<arg>cartId=${cartId}</arg>
+<arg>customerName=${name}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-09-03T23:38:22.483256" elapsed="0.000998"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:24.936139" level="INFO">POST Request : url=https://simple-grocery-store-api.glitch.me/orders 
+ path_url=/orders 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': '41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a', 'Content-Length': '65', 'Content-Type': 'application/json'} 
+ body=b'{"cartId": "kAuepcJ3dwDPhscrhsGmY", "customerName": "Vipul Nara"}' 
+ </msg>
+<msg time="2024-09-03T23:38:24.936139" level="INFO">POST Response : url=https://simple-grocery-store-api.glitch.me/orders 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:24 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '50', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"32-5chwt8nazUYKbstI8XG3wbDBqVw"'} 
+ body={"created":true,"orderId":"p9n_GSXAnwAGNc2GDIOvE"} 
+ </msg>
+<msg time="2024-09-03T23:38:24.937126" level="INFO">${create_order} = &lt;Response [201]&gt;</msg>
+<var>${create_order}</var>
+<arg>${baseUrl}/orders</arg>
+<arg>json=${order_dict}</arg>
+<arg>headers=${header}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-09-03T23:38:22.485255" elapsed="2.451871"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-09-03T23:38:26.030936" level="INFO">GET Request : url=https://simple-grocery-store-api.glitch.me/orders 
+ path_url=/orders 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': '41172d383bad1e504e0fff545b6962f5abf368803cf01c0a27f3ade00e5aa72a'} 
+ body=None 
+ </msg>
+<msg time="2024-09-03T23:38:26.031979" level="INFO">GET Response : url=https://simple-grocery-store-api.glitch.me/orders 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 03 Sep 2024 18:08:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '167', 'Connection': 'keep-alive', 'x-powered-by': 'Express', 'etag': 'W/"a7-cUykZmSAsQuMS5TjnzAbwPhyaKE"'} 
+ body=[{"id":"p9n_GSXAnwAGNc2GDIOvE","items":[{"id":136343402,"productId":4643,"quantity":1}],"customerName":"Vipul Nara","created":"2024-09-03T18:08:23.515Z","comment":""}] 
+ </msg>
+<msg time="2024-09-03T23:38:26.031979" level="INFO">${get_orders} = &lt;Response [200]&gt;</msg>
+<var>${get_orders}</var>
+<arg>${baseUrl}/orders</arg>
+<arg>headers=${header}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-09-03T23:38:24.937126" elapsed="1.094853"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-09-03T23:38:26.033976" level="INFO">[{'id': 'p9n_GSXAnwAGNc2GDIOvE', 'items': [{'id': 136343402, 'productId': 4643, 'quantity': 1}], 'customerName': 'Vipul Nara', 'created': '2024-09-03T18:08:23.515Z', 'comment': ''}]</msg>
+<arg>${get_orders.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-09-03T23:38:26.032978" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2024-09-03T23:38:15.047670" elapsed="10.987308"/>
+</kw>
+<status status="PASS" start="2024-09-03T23:38:15.046419" elapsed="10.990136"/>
+</test>
+<status status="PASS" start="2024-09-03T23:38:14.296244" elapsed="11.743485"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Auth">Auth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
